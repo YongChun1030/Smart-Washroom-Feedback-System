@@ -1,0 +1,72 @@
+.problems-page .problem-container {
+    max-width: 700px;
+    width: 100%;
+  }
+  
+  .problems-page .problem-card {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .problems-page .problem-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  .problems-page .problem-image.selected {
+    border: 2px solid #007bff;
+    border-radius: 5px;
+  }
+  
+  .problems-page .problem-button {
+    padding: 0.25rem 0.5rem; /* Smaller padding */
+    font-size: 0.8rem; /* Maintain font size */
+  }
+  
+  .problems-page .smaller-button {
+    padding: 0.25rem 0.5rem; /* Smaller padding */
+    font-size: 0.8rem; /* Maintain font size */
+  }
+  
+  @media (min-width: 768px) {
+    .problems-page .problem-card {
+      width: auto;
+    }
+  
+    .problems-page .problem-button {
+      padding: 0.3rem 0.6rem; /* Adjust padding for medium screens */
+      font-size: 0.9rem; /* Maintain font size */
+    }
+  
+    .problems-page .smaller-button {
+      padding: 0.3rem 0.6rem; /* Adjust padding for medium screens */
+      font-size: 0.9rem; /* Maintain font size */
+    }
+  }
+  
+  .problems-page .text-white {
+    color: #ffffff; /* Ensure text color is white for visibility */
+  }
+  
+  /* Add margin-top to move content down */
+  .problems-page .content-container {
+    margin-top: 3rem; /* Adjust this value as needed to move content further down */
+  }
+  
+  /* Smaller title, icon, and toilet information */
+  .problems-page .title {
+    font-size: 1.5rem; /* Adjust to make the title smaller */
+    margin-bottom: 1rem; /* Adjust as needed */
+  }
+  
+  .problems-page .toilet-info {
+    font-size: 1.25rem; /* Adjust to make the toilet info smaller */
+    margin-top: 1rem; /* Adjust as needed */
+  }
+  
+  .problems-page .icon {
+    font-size: 2.5rem; /* Adjust to make the icon smaller */
+  }
+  

@@ -1,0 +1,52 @@
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  background: linear-gradient(to bottom right, #00c6ff, #0072ff);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.welcome-page h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.welcome-page h2 {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.welcome-page .icon {
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
+.welcome-page h3 {
+  margin: 1rem 0;
+  font-size: 1.25rem;
+}
+
+.welcome-page .buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.welcome-page .feedback-button,
+.welcome-page .cleaner-button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  color: #0072ff;
+  background-color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.welcome-page .feedback-button:hover,
+.welcome-page .cleaner-button:hover {
+  background-color: #f0f0f0;
+}
