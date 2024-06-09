@@ -1,26 +1,26 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 from bson.json_util import dumps, ObjectId
-from datetime import timezone, datetime, timedelta
-import os
+from datetime import timezone, datetime
 from waitress import serve
 from twilio.rest import Client
 from dotenv import load_dotenv
 import pytz
+import os
 
 # Load environment variables from .env file
 load_dotenv()
 
 MYT = pytz.timezone('Asia/Kuala_Lumpur')
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../swfs-project-frontend/dist')
 
 # Allow CORS for all routes and origins
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # MongoDB connection
-mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/')
+mongo_uri = os.getenv('MONGO_URI', 'mongodb+srv://yongchun021030:lkpFNX0Hun8tUh1Z@cluster-swfs.zvavyj2.mongodb.net/')
 client = MongoClient(mongo_uri)
 db = client['washroom']
 
@@ -49,6 +49,7 @@ def send_whatsapp_message(to, message):
         to=f'whatsapp:{to}'
     )
 
+# API routes
 @app.route('/api/configuration', methods=['POST'])
 def save_configuration():
     try:
@@ -173,7 +174,6 @@ def get_problems():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-
 @app.route('/api/cleaner-login', methods=['POST'])
 def cleaner_login():
     try:
@@ -259,6 +259,15 @@ def solve_problems():
     except Exception as e:
         print(f"Error in solve_problems: {str(e)}")
         return jsonify({'error': str(e)}), 500
+
+# Serve React frontend
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_react_app(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     serve(app, host='0.0.0.0', port=5000)
